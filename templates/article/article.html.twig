@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %} 
+
+{% block title %}Article{% endblock %} 
+
+{% block body %}
+{% if article.id is defined %}
+	<!-- Blog Article -->
+<div class="max-w-3xl px-4 pt-6 lg:pt-10 pb-12 sm:px-6 lg:px-8 mx-auto">
+	<div class="max-w-2xl">
+		<!-- article -->
+		<div class="space-y-5 md:space-y-8">
+			<div class="space-y-3">
+				<h2 class="text-2xl font-bold md:text-3xl dark:text-white">
+					{{ article.title }}
+				</h2>
+
+				<p class="text-lg text-gray-800 dark:text-neutral-200">
+					{{ article.content }}
+				</p>
+			</div>
+			<!-- Author et date -->
+			<div class="grow">
+				<div class="flex justify-between items-center gap-x-2">
+					<div>
+						<!-- Tooltip -->
+						<div class="hs-tooltip [--trigger:hover] [--placement:bottom] inline-block">
+							<div class="hs-tooltip-toggle sm:mb-1 block text-start cursor-pointer">
+								<span class="font-semibold text-gray-800 dark:text-neutral-200">
+								{{ article.users.lastname }} - {{ article.users.firstname }}
+								</span>
+							</div>
+							<ul class="text-xs text-gray-500 dark:text-neutral-500">
+								<li class="inline-block relative pe-6 last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-2 before:-translate-y-1/2 before:size-1 before:bg-gray-300 before:rounded-full dark:text-neutral-400 dark:before:bg-neutral-600">
+								{{ article.createAt | date('d m Y')}}
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End Author et date -->
+			<!-- Categories -->
+			<div>
+				{% for category in article.categories %}
+				<a
+					class="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
+					href="#"
+				>
+					{{ category.libele }}
+				</a>
+				{% endfor %}
+			</div>
+			<!-- End Categories -->
+		</div>
+		<!-- End article -->
+		<!-- Commentary -->
+		<ul class="space-y-10 mt-6">
+			{% for commentary in article.commentaries %}
+			<li>
+				<p class="mt-1 text-sm text-gray-500 dark:text-neutral-500">
+					{{ commentary.content }}
+				</p>
+				
+				<h5
+					class="font-medium text-sm text-gray-800 dark:text-neutral-200"
+				>
+					{{ commentary.users.lastname }} -
+					{{ commentary.users.firstname }}
+				</h5>
+				<p class="mb-2 text-sm text-gray-500 dark:text-neutral-500">
+					{{ commentary.createAt | date("m/d/Y") }}
+				</p>
+			</li>
+			{% endfor %}
+		</ul>
+		<!-- End Commentary -->
+	</div>
+</div>
+<!-- End Blog Article -->
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}météo Toulouse{% endblock %}
+
+{% block body %}  
+<turbo-frame id="meteo-id">
+    <h1>Choisir la ville :</h1>
+    {{ form_start(form) }}
+    {{ form_rest(form) }}
+    {{ form_end(form) }}
+    
+    {# Test si la ville existe #}
+    {% if meteo.cod is defined and meteo.cod == 200 %}
+        <h2>Météo :</h2>
+        <h2>{{ meteo.name }}</h2>
+        <h2>{{ meteo.main.temp -273.15  }} °C</h2>
+        <h2>{{ meteo.sys.country }}</h2>
+        <img src="https://openweathermap.org/img/wn/{{ meteo.weather[0].icon}}@2x.png" alt="icone de la météo">
+    {% endif %}
+    {# Test si la ville n'existe pas #}
+    {% if meteo.cod is defined and meteo.cod == 404 %}
+        <h2>La ville : {{ meteo.message }}</h2>
+    {% endif %}
+</turbo-frame>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}météo Toulouse{% endblock %}
+
+{% block body %}
+    <h1>Météo :</h1>
+    <h2>{{ meteo.name }}</h2>
+    <h2>{{ meteo.main.temp -273.15  }} °C</h2>
+    <h2>{{ meteo.sys.country }}</h2>
+    <img src="https://openweathermap.org/img/wn/{{ meteo.weather[0].icon}}@2x.png" alt="icone de la météo">
+{% endblock %}
