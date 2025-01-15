@@ -20,6 +20,7 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
     App\Service\ExempleService:
-        arguments: ['%env(WEATHER_API)%']
+        arguments: 
+            $apiKey: '%env(WEATHER_API)%'
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

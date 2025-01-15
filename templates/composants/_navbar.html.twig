@@ -64,11 +64,11 @@
 				<div
 					class="flex flex-col gap-2 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5"
 				>
-					<a
+					<p
 						class="font-medium text-white focus:outline-none dark:text-black"
 						href="#"
 						aria-current="page"
-						>Mon blog</a
+						>Mon blog</p
 					>
 					<a
 						class="font-medium text-gray-400 hover:text-gray-500 focus:outline-none focus:text-gray-500 dark:text-neutral-500 dark:hover:text-neutral-400 dark:focus:text-neutral-400"
@@ -85,6 +85,16 @@
 						href="{{ path('app_category_showAll') }}"
 						>Catégories</a
 					>
+					<a
+						class="font-medium text-gray-400 hover:text-gray-500 focus:outline-none focus:text-gray-500 dark:text-neutral-500 dark:hover:text-neutral-400 dark:focus:text-neutral-400"
+						href="{{ path('app_weather') }}"
+						>Météo locale</a
+					>
+					<a
+						class="font-medium text-gray-400 hover:text-gray-500 focus:outline-none focus:text-gray-500 dark:text-neutral-500 dark:hover:text-neutral-400 dark:focus:text-neutral-400"
+						href="{{ path('app_weather_city') }}"
+						>Météo Ville</a
+					>
 					{% if app.user %}
 					<a
 						class="font-medium text-gray-400 hover:text-gray-500 focus:outline-none focus:text-gray-500 dark:text-neutral-500 dark:hover:text-neutral-400 dark:focus:text-neutral-400"
@@ -96,14 +106,20 @@
 						href="{{ path('app_category_add') }}"
 						>Ajouter Catégorie</a
 					>
+					
 					<a
-						class="font-medium text-gray-400 hover:text-gray-500 focus:outline-none focus:text-gray-500 dark:text-neutral-500 dark:hover:text-neutral-400 dark:focus:text-neutral-400"
+						class="font-medium text-white hover:text-gray-500 focus:outline-none dark:text-black"
 						href="{{ path('app_logout') }}"
 						>Déconnexion</a
 					>
 					{% else %}
 					<a
-						class="font-medium text-gray-400 hover:text-gray-500 focus:outline-none focus:text-gray-500 dark:text-neutral-500 dark:hover:text-neutral-400 dark:focus:text-neutral-400"
+						class="font-medium text-white hover:text-gray-500 focus:outline-none dark:text-black"
+						href="{{ path('app_user') }}"
+						>Inscription</a
+					>
+					<a
+						class="font-medium text-white hover:text-gray-500 focus:outline-none dark:text-black"
 						href="{{ path('app_login') }}"
 						>Connexion</a
 					>
