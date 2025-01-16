@@ -18,19 +18,20 @@ MESSENGER_TRANSPORT_DSN=doctrine://default?auto_setup=0
 MAILER_DSN=null://null
 WEATHER_API=
 ```
+
 ```sh
 # .env.dev
 APP_SECRET=0000000000000000000000
 # remplacer la version de MariaDB /MySQL par la votre
 DATABASE_URL="mysql://login-bdd:mdp-bdd@127.0.0.1:3306/name-bdd?serverVersion=10.4.32-MariaDB&charset=utf8mb4"
 # remplacer par votre clé api weather
-WEATHER_API=00000000000000000000000000000000
+WEATHER_API=0000000000000000000000000000000
 ```
+
 3 Générer la clé APP_SECRET
 ```sh
-symfony console secrets:set APP_SECRET
 symfony console secrets:set APP_SECRET --local
-@```
+```
 
 4 Installer les dépendances du projet :
 ```sh
