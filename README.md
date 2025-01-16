@@ -28,15 +28,17 @@ DATABASE_URL="mysql://login-bdd:mdp-bdd@127.0.0.1:3306/name-bdd?serverVersion=10
 WEATHER_API=0000000000000000000000000000000
 ```
 
-3 Générer la clé APP_SECRET
+3 Installer les dépendances du projet :
+```sh
+composer install
+```
+
+
+4 Générer la clé APP_SECRET
 ```sh
 symfony console secrets:set APP_SECRET --local
 ```
 
-4 Installer les dépendances du projet :
-```sh
-composer install
-```
 
 5 Créer et migrer la base de données :
 ```sh
