@@ -17,8 +17,7 @@ class DashboardController extends AbstractDashboardController
 {
     public function __construct(private AdminUrlGenerator $adminUrlGenerator){}
 
-    #[Route('/admin', name: 'admin')]
-    #[Route('/admin', name: 'admin')]
+    #[Route('/enigma', name: 'admin')]
     public function index(): Response
     {
         $url = $this->adminUrlGenerator
@@ -36,10 +35,11 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-list', User::class);
-        yield MenuItem::linkToCrud('Categories', 'fas fa-list', Category::class);
-        yield MenuItem::linkToCrud('Articles', 'fas fa-list', Article::class);
-        yield MenuItem::linkToCrud('Commentaires', 'fas fa-list', Commentary::class);
+        yield MenuItem::linkToRoute('Retour à l\'accueil', 'fa fa-home', 'app_article_all');
+        yield MenuItem::linkToCrud('Utilisateurs', 'fa-solid fa-users', User::class);
+        yield MenuItem::linkToCrud('Articles', 'fa-regular fa-newspaper', Article::class);
+        yield MenuItem::linkToCrud('Catégorie', 'fas fa-list', Category::class);
+        yield MenuItem::linkToCrud('Commentaires', 'fa-regular fa-comments', Commentary::class);
+
     }
 }
