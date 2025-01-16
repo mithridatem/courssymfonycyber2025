@@ -18,13 +18,14 @@ MESSENGER_TRANSPORT_DSN=doctrine://default?auto_setup=0
 MAILER_DSN=null://null
 WEATHER_API=
 ```
+
 ```sh
 # .env.dev
-APP_SECRET=43168aaea0a236a59a1bd62c08e5483d
+APP_SECRET=0000000000000000000000
 # remplacer la version de MariaDB /MySQL par la votre
 DATABASE_URL="mysql://login-bdd:mdp-bdd@127.0.0.1:3306/name-bdd?serverVersion=10.4.32-MariaDB&charset=utf8mb4"
 # remplacer par votre clé api weather
-WEATHER_API=00000000000000000000000000000000
+WEATHER_API=0000000000000000000000000000000
 ```
 
 3 Installer les dépendances du projet :
@@ -32,18 +33,25 @@ WEATHER_API=00000000000000000000000000000000
 composer install
 ```
 
-4 Créer et migrer la base de données :
+
+4 Générer la clé APP_SECRET
+```sh
+symfony console secrets:set APP_SECRET --local
+```
+
+
+5 Créer et migrer la base de données :
 ```sh
 symfony console d:d:c
 symfony console d:m:m
 ```
 
-5 Créer les fixtures :
+6 Créer les fixtures :
 ```sh
 symfony console d:f:l
 ```
 
-6 Télécharger les assets :
+7 Télécharger les assets :
 ```sh
 # si manquante
 symfony console importmap:require preline
@@ -51,12 +59,12 @@ symfony console importmap:require preline
 symfony console importmap:install
 ```
 
-7 Builder les sources Tailwind :
+8 Builder les sources Tailwind :
 ```sh
 ./bin/tailwindcss -i assets/styles/app.css -o assets/styles/app.tailwind.css –W
 ```
 
-8 Démarrer le projet :
+9 Démarrer le projet :
 ```sh
 symfony server:start -d
 # ou (Alias)
